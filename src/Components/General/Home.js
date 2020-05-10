@@ -13,14 +13,7 @@ const Home = () => {
   return (
     <div className="homePage">
       <Nav />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "30px 70px",
-        }}
-      >
+      <div className="homeContainer">
         <Row>
           <Col lg={3}>
             <img src={Bottle} width="250px" height="400px" className="images" />

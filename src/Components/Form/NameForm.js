@@ -12,7 +12,10 @@ const NameForm = ({ handleChange, handleSubmit, text }) => {
         fontWeight: "100",
         fontSize: "1.1rem",
       }}
+      className="pledgeContainer"
       lg={6}
+      xs={12}
+      md={12}
     >
       {" "}
       <Form onSubmit={handleSubmit}>
@@ -26,6 +29,7 @@ const NameForm = ({ handleChange, handleSubmit, text }) => {
               fontSize: "1.5rem",
               marginBottom: "0rem",
             }}
+            className="pledge"
           >
             I
           </p>
@@ -42,7 +46,7 @@ const NameForm = ({ handleChange, handleSubmit, text }) => {
           </div>
         </div>{" "}
         <br />
-        <p>
+        <p className="pledge">
           Endorse The Naija Bar Rescue Initiative.​ To curtail the spread of
           COVID-19, Bars have closed their doors. Consequently, they don’t have
           money to pay their staff and other bills. ​ Support your favorite bar

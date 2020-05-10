@@ -33,3 +33,15 @@ input {
     display: none;
   }
 }
+@media screen and (max-width: 420px) {
+  .formControl {
+    width: 100%;
+  }
+  .pledge {
+    font-size: 1rem;
+    padding: 5px;
+  }
+  .pledgeContainer {
+    padding: 0px !important;
+  }
+}
