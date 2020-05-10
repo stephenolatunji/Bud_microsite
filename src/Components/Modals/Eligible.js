@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./eligible.css";
+import "./modals.css";
 
 //Bootstrap
 import { Modal, Button } from "react-bootstrap";

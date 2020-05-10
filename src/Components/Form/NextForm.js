@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Next } from "react-bootstrap/PageItem";
 import { Col, Form, Button } from "react-bootstrap";
 
-const NextForm = ({ text }) => {
+const NextForm = ({ text, setCurrentPage }) => {
+  const [value1, setValue1] = useState("");
+  const [value2, setValue2] = useState("");
+
+  const handleChange = (e) => {
+    setValue1(e.target.value1);
+    setValue2(e.target.value2);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCurrentPage(2);
+  };
   return (
     <Col
       style={{
@@ -12,7 +24,7 @@ const NextForm = ({ text }) => {
         fontWeight: "100",
         fontSize: "1.1rem",
       }}
-      lg={6}
+      lg={12}
     >
       <h3
         style={{
@@ -32,7 +44,7 @@ const NextForm = ({ text }) => {
       >
         You are almost done
       </p>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Row>
           <Form.Group
             as={Col}
@@ -63,9 +75,9 @@ const NextForm = ({ text }) => {
           <Form.Group as={Col} xs={12} md={12} lg={6} controlId="formGridState">
             <Form.Control
               as="select"
-              value="Select Gender"
+              value={value1}
+              onChange={handleChange}
               className="formInput"
-              required
             >
               <option>Select Gender</option>
               <option>Male</option>
@@ -75,9 +87,9 @@ const NextForm = ({ text }) => {
           <Form.Group as={Col} xs={12} md={12} lg={6} controlId="formGridState">
             <Form.Control
               as="select"
-              value="Select Location"
+              value={value2}
+              onChange={handleChange}
               className="formInput"
-              required
             >
               <option>Select Location</option>
               <option>Abia</option>

@@ -15,13 +15,23 @@ const Home = () => {
       <Nav />
       <div className="homeContainer">
         <Row>
-          <Col lg={3}>
-            <img src={Bottle} width="250px" height="400px" className="images" />
-          </Col>
+          <Col
+            lg={3}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          ></Col>
           <Pages />
-          <Col lg={3}>
-            <img src={Bottle} width="250px" height="400px" className="images" />
-          </Col>
+          <Col
+            lg={3}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          ></Col>
         </Row>
       </div>
     </div>

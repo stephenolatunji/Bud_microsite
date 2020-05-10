@@ -6,6 +6,7 @@ import { Navbar } from "react-bootstrap";
 
 //Image
 import Logo from "../.././assets/NBR Logo/nbr-white.png";
+import BudLogo from "../../assets/Bud Logo/bud-red.png";
 
 const Nav = () => {
   return (
@@ -15,22 +16,24 @@ const Nav = () => {
           style={{
             color: "white",
             padding: "25px 20px",
+            width: "100%",
             display: "flex",
             alignItems: "center",
-            fontSize: "20px",
-            textTransform: "uppercase",
-            fontFamily: "'Roboto', sans-serif",
-            fontWeight: "500",
+            justifyContent: "space-between",
           }}
         >
           <img
             alt=""
             src={Logo}
-            width="50"
-            height="60"
+            height="90"
             className="d-inline-block align-top logo"
           />{" "}
-          Extra Special Pledge
+          <img
+            alt=""
+            src={BudLogo}
+            height="50"
+            className="d-inline-block align-top budlogo"
+          />{" "}
         </Navbar.Brand>
       </Navbar>
     </>

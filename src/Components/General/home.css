@@ -1,5 +1,8 @@
 .homePage {
-  background-color: black;
+  background-image: url(../../assets/General/background.jpeg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   min-height: 100vh;
   color: white;
 }
