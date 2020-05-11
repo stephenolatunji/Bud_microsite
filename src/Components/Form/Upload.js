@@ -24,7 +24,7 @@ const Upload = ({ onChangeHandler, onClickHandler, uploadedImage }) => {
           padding: "40px",
           margin: "auto",
           marginBottom: "20px",
-          border: "2px solid black",
+          border: "2px solid white",
         }}
       >
         <img
@@ -46,6 +46,7 @@ const Upload = ({ onChangeHandler, onClickHandler, uploadedImage }) => {
             style={{
               opacity: 0,
               position: "absolute",
+              width: "100px",
               // display: "none",
               // pointerEvents: 'none',
             }}

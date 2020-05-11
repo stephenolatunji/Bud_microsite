@@ -32,6 +32,10 @@ input {
   .images {
     display: none;
   }
+  .pledgeContainer {
+    padding: 0px !important;
+    top: 0px;
+  }
 }
 @media screen and (max-width: 420px) {
   .formControl {
@@ -40,8 +44,5 @@ input {
   .pledge {
     font-size: 1rem;
     padding: 5px;
-  }
-  .pledgeContainer {
-    padding: 0px !important;
   }
 }
