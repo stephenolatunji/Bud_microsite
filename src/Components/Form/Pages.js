@@ -3,16 +3,18 @@ import React, { useState } from "react";
 //Components
 import NextForm from "../Form/NextForm";
 import NameForm from "../Form/NameForm";
+import Upload from "../Form/Upload";
 import GeneratedPage from "../General/GeneratedPage";
-
-//Bootstrap
-import Error from "../Modals/Error";
 
 const Pages = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [text, setText] = useState("");
   const [errorExists, setErrorExists] = useState(false);
+  const [file, setFile] = useState(null);
+  const uploadedImage = React.useRef(null);
+  const [uploadedImageSrc, setUploadedImageSrc] = useState("");
 
+  //user name
   const handleChange = (e) => {
     setText(e.target.value);
     console.log(text);
@@ -30,6 +32,31 @@ const Pages = () => {
     }
   };
 
+  //image upload
+  const onChangeHandler = (e) => {
+    const [file] = e.target.files;
+    if (file) {
+      const reader = new FileReader();
+      const { current } = uploadedImage;
+      current.file = file;
+
+      reader.onload = (e) => {
+        current.src = e.target.result;
+        setUploadedImageSrc(e.target.result);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const onClickHandler = (e) => {
+    e.preventDefault();
+    setFile(file);
+    setCurrentPage(3);
+    console.log(uploadedImage);
+    console.log(setFile);
+  };
+
   if (currentPage === 0) {
     return (
       <NameForm
@@ -42,7 +69,22 @@ const Pages = () => {
   } else if (currentPage === 1) {
     return <NextForm setCurrentPage={setCurrentPage} text={text} />;
   } else if (currentPage === 2) {
-    return <GeneratedPage text={text} />;
+    return (
+      <Upload
+        setCurrentPage={setCurrentPage}
+        onChangeHandler={onChangeHandler}
+        onClickHandler={onClickHandler}
+        uploadedImage={uploadedImage}
+      />
+    );
+  } else if (currentPage === 3) {
+    return (
+      <GeneratedPage
+        uploadedImage={uploadedImage}
+        uploadedImageSrc={uploadedImageSrc}
+        text={text}
+      />
+    );
   }
 };
 

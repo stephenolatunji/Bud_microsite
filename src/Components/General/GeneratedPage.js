@@ -1,31 +1,13 @@
 import React from "react";
+import "./generate.css";
 
 //Bootstrap
-import { Card, Button, Col, Navbar } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
+import Share from "../Layout/Share";
 
-//Image
-import Logo from "../.././assets/NBR Logo/nbr-red.png";
-import BudLogo from "../../assets/Bud Logo/bud-red.png";
-
-const GeneratedPage = ({ text }) => {
+const GeneratedPage = ({ text, uploadedImage, uploadedImageSrc }) => {
   return (
-    <Col
-      style={{
-        position: "relative",
-        displa: "flex",
-        alignItems: "center",
-        top: "-70px",
-        textAlign: "left",
-        padding: "25px",
-        fontFamily: "'Roboto', sans-serif",
-        fontWeight: "100",
-        fontSize: "1.1rem",
-      }}
-      className="pledgeContainer"
-      lg={12}
-      xs={12}
-      md={12}
-    >
+    <Col className="pledgeContainer" lg={12} xs={12} md={12}>
       <div>
         <h3
           style={{
@@ -48,7 +30,7 @@ const GeneratedPage = ({ text }) => {
       </div>
       <Card
         style={{
-          width: "22rem",
+          width: "21rem",
           backgroundColor: "grey",
           color: "white",
           borderRadius: "25px",
@@ -59,14 +41,15 @@ const GeneratedPage = ({ text }) => {
           justifyContent: "flex-end",
         }}
       >
-        <Card.Img
+        <img
+          src={uploadedImageSrc}
           variant="top"
           style={{
             borderRadius: "50%",
             border: "2px solid black",
             objectFit: "cover",
-            height: "100px",
-            width: "100px",
+            width: "150px",
+            height: "150px",
           }}
         />
         <Card.Body>
@@ -94,27 +77,23 @@ const GeneratedPage = ({ text }) => {
             N3000 now. You can redeem your voucher when the bar opens
           </Card.Text>
         </Card.Body>
-        <div>
-          <p
-            style={{
-              borderRadius: "25px",
-              border: "3px solid black",
-              padding: "8px",
-              textTransform: "uppercase",
-              color: "white",
-              backgroundColor: "#b11917",
-              width: "20px",
-              fontSize: "0.75rem",
-              fontWeight: "bold",
-              width: "218px",
-              textAlign: "center",
-              marginTop: "15px",
-            }}
-          >
-            www.naijabarrescue.com
-          </p>
-        </div>
       </Card>
+      <div>
+        <p
+          style={{
+            border: "2px solid #b11917",
+            backgroundColor: "#b11917",
+            borderRadius: "25px",
+            padding: "11px",
+            textAlign: "center",
+            marginTop: "10px",
+            fontWeight: "400",
+          }}
+        >
+          www.naijabarrescue.com
+        </p>
+      </div>
+      <Share text={text} />
     </Col>
   );
 };

@@ -45,7 +45,7 @@ const NextForm = ({ text, setCurrentPage }) => {
         You are almost done
       </p>
       <Form onSubmit={handleSubmit}>
-        <Form.Row>
+        {/* <Form.Row>
           <Form.Group
             as={Col}
             xs={12}
@@ -70,20 +70,8 @@ const NextForm = ({ text, setCurrentPage }) => {
               required
             />
           </Form.Group>
-        </Form.Row>
+        </Form.Row> */}
         <Form.Row>
-          <Form.Group as={Col} xs={12} md={12} lg={6} controlId="formGridState">
-            <Form.Control
-              as="select"
-              value={value1}
-              onChange={handleChange}
-              className="formInput"
-            >
-              <option>Select Gender</option>
-              <option>Male</option>
-              <option>Female</option>
-            </Form.Control>
-          </Form.Group>
           <Form.Group as={Col} xs={12} md={12} lg={6} controlId="formGridState">
             <Form.Control
               as="select"

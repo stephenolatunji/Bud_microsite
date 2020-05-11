@@ -6,7 +6,7 @@ import { Navbar } from "react-bootstrap";
 
 //Image
 import Logo from "../.././assets/NBR Logo/nbr-white.png";
-import BudLogo from "../../assets/Bud Logo/bud-red.png";
+import BudLogo from "../../assets/Bud Logo/bud-fill.png";
 
 const Nav = () => {
   return (

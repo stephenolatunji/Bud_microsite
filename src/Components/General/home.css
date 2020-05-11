@@ -1,6 +1,6 @@
 .homePage {
   background-image: url(../../assets/General/background.jpeg);
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
