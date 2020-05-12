@@ -9,10 +9,10 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-const Share = ({ text }) => {
+const Share = ({ text, printDocument }) => {
   return (
     <div className="icons">
-      <i className="fas fa-download icon"></i>
+      <i className="fas fa-download icon" onClick={printDocument}></i>
       <FacebookShareButton
         className="icon"
         url={"www.naijabarrescuepledge.netlify.app"}

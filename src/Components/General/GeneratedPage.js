@@ -1,4 +1,6 @@
 import React from "react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import "./generate.css";
 
 //Bootstrap
@@ -7,6 +9,16 @@ import Share from "../Layout/Share";
 import DownloadImage from "./DownloadImage";
 
 const GeneratedPage = ({ text, uploadedImage, uploadedImageSrc }) => {
+  const printDocument = () => {
+    const input = document.getElementById("divToPrint");
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, "PNG", 0, 0);
+      // pdf.output('dataurlnewwindow');
+      pdf.save("download.pdf");
+    });
+  };
   return (
     <Col className="pledgeContainer" lg={12} xs={12} md={12}>
       <div>
@@ -29,7 +41,11 @@ const GeneratedPage = ({ text, uploadedImage, uploadedImageSrc }) => {
           Download and share your pledge.
         </p>
       </div>
-      <DownloadImage uploadedImageSrc={uploadedImageSrc} text={text} />
+      <DownloadImage
+        uploadedImageSrc={uploadedImageSrc}
+        text={text}
+        printDocument={printDocument}
+      />
       <div>
         <p
           style={{
@@ -45,7 +61,7 @@ const GeneratedPage = ({ text, uploadedImage, uploadedImageSrc }) => {
           www.naijabarrescue.com
         </p>
       </div>
-      <Share text={text} />
+      <Share text={text} printDocument={printDocument} />
     </Col>
   );
 };

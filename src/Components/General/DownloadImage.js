@@ -1,6 +1,4 @@
 import React from "react";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 
 import { Card } from "react-bootstrap";
 
@@ -18,11 +16,7 @@ const DownloadImage = ({ uploadedImageSrc, text }) => {
   }
 
   return (
-    <div >
-      <div className="mb5">
-        <button onClick={printDocument}>Download</button>
-      </div>
-
+    <div>
       <div id="divToPrint">
         <Card
           style={{
