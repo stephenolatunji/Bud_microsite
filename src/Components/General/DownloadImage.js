@@ -75,7 +75,7 @@ const DownloadImage = ({ uploadedImageSrc, text }) => {
               fontSize: "0.4rem",
             }}
           >
-            www.naijabarrescue.com
+            <a href='http://www.naijabarrescue.com'>www.naijabarrescue.com</a>
           </p>
         </div>
       </div>
