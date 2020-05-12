@@ -69,7 +69,7 @@ const NameForm = ({ handleChange, handleSubmit, text, errorExists }) => {
               width: "150px",
             }}
           >
-            Pledge
+            Endorse
           </Button>
         </Form>
       </Col>

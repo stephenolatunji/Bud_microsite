@@ -29,11 +29,12 @@ const DownloadImage = ({ uploadedImageSrc, text }) => {
             src={uploadedImageSrc}
             variant="top"
             style={{
+              pmarginTop: "5px",
               borderRadius: "50%",
               border: "2px solid black",
               objectFit: "cover",
-              width: "50px",
-              height: "50px",
+              width: "60px",
+              height: "60px",
             }}
           />
           <Card.Body>
@@ -75,7 +76,15 @@ const DownloadImage = ({ uploadedImageSrc, text }) => {
               fontSize: "0.4rem",
             }}
           >
-            <a href='http://www.naijabarrescue.com'>www.naijabarrescue.com</a>
+            <a
+              href="http://www.naijabarrescue.com"
+              style={{
+                color: "white",
+                textDecoration: "none",
+              }}
+            >
+              www.naijabarrescue.com
+            </a>
           </p>
         </div>
       </div>

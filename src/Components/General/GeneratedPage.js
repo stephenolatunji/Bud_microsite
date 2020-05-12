@@ -1,35 +1,24 @@
 import React from "react";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import htmlToImage from "html-to-image";
 import "./generate.css";
 
 //Bootstrap
-import { Card, Col, Navbar } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import Share from "../Layout/Share";
 import DownloadImage from "./DownloadImage";
-
-//Images
-import Logo from "../.././assets/NBR Logo/nbr-white.png";
-import BudLogo from "../../assets/Bud Logo/bud-fill.png";
 
 const GeneratedPage = ({ text, uploadedImage, uploadedImageSrc }) => {
   const canvasRef = React.useRef(null);
   const printDocument = () => {
-    const input = document.getElementById("canvasImage");
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF({
-        orientation: "portrait",
+    // const input = document.getElementById("canvasImage");
+    htmlToImage
+      .toJpeg(document.getElementById("canvasImage"), { quality: 0.95 })
+      .then(function (dataUrl) {
+        var link = document.createElement("a");
+        link.download = "my-image-name.jpeg";
+        link.href = dataUrl;
+        link.click();
       });
-      const imgProps = pdf.getImageProperties(imgData);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-      pdf.save("download.pdf");
-      // Open the image in a new window
-      // window.open(exportedImage);
-    });
-    // const canvas = document.getElementById("canvasImage");
   };
   return (
     <Col className="pledgeContainer" lg={12} xs={12} md={12}>
@@ -149,3 +138,18 @@ export default GeneratedPage;
 //   // pdf.output('dataurlnewwindow');
 //   pdf.save("download.pdf");
 // });
+
+// html2canvas(input).then((canvas) => {
+//   const imgData = canvas.toDataURL("image/png");
+//   const pdf = new jsPDF({
+//     orientation: "portrait",
+//   });
+//   const imgProps = pdf.getImageProperties(imgData);
+//   const pdfWidth = pdf.internal.pageSize.getWidth();
+//   const pdfHeight = pdf.internal.pageSize.getHeight();
+//   pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+//   pdf.save("download.pdf");
+// Open the image in a new window
+// window.open(exportedImage);
+// });
+// const canvas = document.getElementById("canvasImage");
