@@ -2,7 +2,7 @@ import React from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-import { Card, Col } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 const DownloadImage = ({ uploadedImageSrc, text }) => {
 
@@ -10,8 +10,8 @@ const DownloadImage = ({ uploadedImageSrc, text }) => {
     const input = document.getElementById("divToPrint");
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, "PNG", 0, 0);
+      const pdf = new jsPDF("portrait", "mm", "a4");
+      pdf.addImage(imgData, "JPEG", 0, 0, 210, 297);
       // pdf.output('dataurlnewwindow');
       pdf.save("download.pdf");
     });
@@ -30,7 +30,7 @@ const DownloadImage = ({ uploadedImageSrc, text }) => {
             backgroundColor: "grey",
             color: "white",
             borderRadius: "25px",
-            paddingTop: "15px",
+            // paddingTop: "15px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
