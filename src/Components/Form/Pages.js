@@ -50,11 +50,15 @@ const Pages = () => {
   };
 
   const onClickHandler = (e) => {
-    e.preventDefault();
     setFile(file);
     setCurrentPage(3);
-    console.log(uploadedImage);
-    console.log(setFile);
+    // e.preventDefault();
+    // if (file === null) {
+    //   setErrorExists(true);
+    // } else {
+    //   setErrorExists(false);
+     
+    // }
   };
 
   if (currentPage === 0) {
@@ -67,7 +71,14 @@ const Pages = () => {
       />
     );
   } else if (currentPage === 1) {
-    return <NextForm setCurrentPage={setCurrentPage} text={text} />;
+    return (
+      <NextForm
+        setCurrentPage={setCurrentPage}
+        errorExists={errorExists}
+        setErrorExists={setErrorExists}
+        text={text}
+      />
+    );
   } else if (currentPage === 2) {
     return (
       <Upload
@@ -75,6 +86,7 @@ const Pages = () => {
         onChangeHandler={onChangeHandler}
         onClickHandler={onClickHandler}
         uploadedImage={uploadedImage}
+        errorExists={errorExists}
       />
     );
   } else if (currentPage === 3) {

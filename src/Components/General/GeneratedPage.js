@@ -13,19 +13,79 @@ import Logo from "../.././assets/NBR Logo/nbr-white.png";
 import BudLogo from "../../assets/Bud Logo/bud-fill.png";
 
 const GeneratedPage = ({ text, uploadedImage, uploadedImageSrc }) => {
+  const canvasRef = React.useRef(null);
   const printDocument = () => {
-    const input = document.getElementById("divToPrint");
+    const input = document.getElementById("canvasImage");
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("portrait", "mm", "a4");
-      pdf.addImage(imgData, "JPEG", 0, 0, 210, 297);
-      // pdf.output('dataurlnewwindow');
+      const pdf = new jsPDF({
+        orientation: "landscape",
+      });
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
       pdf.save("download.pdf");
+      // Open the image in a new window
+      // window.open(exportedImage);
     });
+    // const canvas = document.getElementById("canvasImage");
   };
   return (
     <Col className="pledgeContainer" lg={12} xs={12} md={12}>
       <div>
+        <h3
+          style={{
+            fontFamily: "'Roboto', sans-serif",
+            fontWeight: "400",
+            fontSize: "2.1rem",
+          }}
+        >
+          Congratulations!
+        </h3>
+        <p
+          style={{
+            fontFamily: "'Roboto', sans-serif",
+            fontWeight: "100",
+            fontSize: "1.2rem",
+          }}
+        >
+          Download and share your pledge.
+        </p>
+      </div>
+      <div id="canvasImage" style={{ position: "relative" }}>
+        <canvas
+          ref={canvasRef}
+          id="canvas"
+          height="300"
+          width="300"
+          onClick={(e) => {
+            const canvas = canvasRef.current;
+            const ctx = canvas.getContext("2d");
+            // implement draw on ctx here
+            const imageElement = document.getElementById("image");
+          }}
+          style={{
+            backgroundColor: "#b11917",
+          }}
+        ></canvas>
+        <div className="content">
+          <DownloadImage
+            uploadedImageSrc={uploadedImageSrc}
+            text={text}
+            printDocument={printDocument}
+          />
+        </div>
+      </div>
+      <Share text={text} printDocument={printDocument} />
+    </Col>
+  );
+};
+
+export default GeneratedPage;
+
+{
+  /* <div>
         <h3
           style={{
             fontFamily: "'Roboto', sans-serif",
@@ -78,10 +138,14 @@ const GeneratedPage = ({ text, uploadedImage, uploadedImageSrc }) => {
           text={text}
           printDocument={printDocument}
         />
-      </Card>
-      <Share text={text} printDocument={printDocument} />
-    </Col>
-  );
-};
+      </Card> */
+}
 
-export default GeneratedPage;
+// const input = document.getElementById("divToPrint");
+// html2canvas(input).then((canvas) => {
+//   const imgData = canvas.toDataURL("image/png");
+//   const pdf = new jsPDF("portrait", "mm", "a4");
+//   pdf.addImage(imgData, "JPEG", 0, 0, 210, 297);
+//   // pdf.output('dataurlnewwindow');
+//   pdf.save("download.pdf");
+// });

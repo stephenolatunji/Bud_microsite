@@ -10,6 +10,17 @@
   font-weight: 100;
   font-size: 1.1rem;
 }
+#canvas {
+  background-image: url(../../assets/General/backgroundcard.jpeg);
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.content {
+  top: 49px;
+  left: 60px;
+  position: absolute;
+}
 .downloadImage {
   background-image: url(../../assets/General/background.jpeg);
   background-position: bottom;

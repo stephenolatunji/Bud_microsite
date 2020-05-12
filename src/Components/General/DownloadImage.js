@@ -14,7 +14,7 @@ const DownloadImage = ({ uploadedImageSrc, text }) => {
       >
         <Card
           style={{
-            width: "21rem",
+            width: "13rem",
             backgroundColor: "#b11917",
             color: "white",
             borderRadius: "25px",
@@ -32,14 +32,14 @@ const DownloadImage = ({ uploadedImageSrc, text }) => {
               borderRadius: "50%",
               border: "2px solid black",
               objectFit: "cover",
-              width: "150px",
-              height: "150px",
+              width: "50px",
+              height: "50px",
             }}
           />
           <Card.Body>
             <Card.Text
               style={{
-                fontSize: "0.75rem",
+                fontSize: "0.4rem",
                 fontWeight: "400",
                 textAlign: "center",
               }}
@@ -68,11 +68,11 @@ const DownloadImage = ({ uploadedImageSrc, text }) => {
               border: "2px solid #b11917",
               backgroundColor: "#b11917",
               borderRadius: "25px",
-              padding: "8px",
+              padding: "5px",
               textAlign: "center",
               marginTop: "10px",
               fontWeight: "400",
-              fontSize: "0.8rem",
+              fontSize: "0.4rem",
             }}
           >
             www.naijabarrescue.com

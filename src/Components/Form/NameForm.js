@@ -6,7 +6,7 @@ import Error from "../Modals/Error";
 const NameForm = ({ handleChange, handleSubmit, text, errorExists }) => {
   return (
     <>
-      {errorExists ? <Error /> : null}
+      {errorExists ? <Error name={"name"} /> : null}
       <Col
         style={{
           textAlign: "left",
