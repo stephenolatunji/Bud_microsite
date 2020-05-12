@@ -10,6 +10,16 @@
   font-weight: 100;
   font-size: 1.1rem;
 }
+.downloadImage {
+  background-image: url(../../assets/General/background.jpeg);
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+.mainSiteLink::after {
+  content: "";
+}
 
 @media screen and (max-width: 768px) {
   .pledgeContainer {

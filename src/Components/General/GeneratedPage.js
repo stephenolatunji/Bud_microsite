@@ -4,17 +4,21 @@ import jsPDF from "jspdf";
 import "./generate.css";
 
 //Bootstrap
-import { Col } from "react-bootstrap";
+import { Card, Col, Navbar } from "react-bootstrap";
 import Share from "../Layout/Share";
 import DownloadImage from "./DownloadImage";
+
+//Images
+import Logo from "../.././assets/NBR Logo/nbr-white.png";
+import BudLogo from "../../assets/Bud Logo/bud-fill.png";
 
 const GeneratedPage = ({ text, uploadedImage, uploadedImageSrc }) => {
   const printDocument = () => {
     const input = document.getElementById("divToPrint");
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, "PNG", 0, 0);
+      const pdf = new jsPDF("portrait", "mm", "a4");
+      pdf.addImage(imgData, "JPEG", 0, 0, 210, 297);
       // pdf.output('dataurlnewwindow');
       pdf.save("download.pdf");
     });
@@ -41,26 +45,40 @@ const GeneratedPage = ({ text, uploadedImage, uploadedImageSrc }) => {
           Download and share your pledge.
         </p>
       </div>
-      <DownloadImage
-        uploadedImageSrc={uploadedImageSrc}
-        text={text}
-        printDocument={printDocument}
-      />
-      <div>
-        <p
-          style={{
-            border: "2px solid #b11917",
-            backgroundColor: "#b11917",
-            borderRadius: "25px",
-            padding: "11px",
-            textAlign: "center",
-            marginTop: "10px",
-            fontWeight: "400",
-          }}
-        >
-          www.naijabarrescue.com
-        </p>
-      </div>
+      <Card id="divToPrint" className="downloadImage">
+        <Navbar>
+          <Navbar.Brand
+            style={{
+              color: "white",
+              padding: "25px 5px",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <img
+              alt=""
+              src={Logo}
+              height="50"
+              width="45"
+              className="d-inline-block align-top"
+            />{" "}
+            <img
+              alt=""
+              src={BudLogo}
+              height="40"
+              width="55"
+              className="d-inline-block align-top budlogo"
+            />{" "}
+          </Navbar.Brand>
+        </Navbar>
+        <DownloadImage
+          uploadedImageSrc={uploadedImageSrc}
+          text={text}
+          printDocument={printDocument}
+        />
+      </Card>
       <Share text={text} printDocument={printDocument} />
     </Col>
   );

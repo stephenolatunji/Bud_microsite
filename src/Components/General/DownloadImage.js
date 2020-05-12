@@ -3,25 +3,19 @@ import React from "react";
 import { Card } from "react-bootstrap";
 
 const DownloadImage = ({ uploadedImageSrc, text }) => {
-
-  const printDocument = () => {
-    const input = document.getElementById("divToPrint");
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("portrait", "mm", "a4");
-      pdf.addImage(imgData, "JPEG", 0, 0, 210, 297);
-      // pdf.output('dataurlnewwindow');
-      pdf.save("download.pdf");
-    });
-  }
-
   return (
     <div>
-      <div id="divToPrint">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-end",
+        }}
+      >
         <Card
           style={{
             width: "21rem",
-            backgroundColor: "grey",
+            backgroundColor: "#b11917",
             color: "white",
             borderRadius: "25px",
             // paddingTop: "15px",
@@ -68,6 +62,22 @@ const DownloadImage = ({ uploadedImageSrc, text }) => {
             </Card.Text>
           </Card.Body>
         </Card>
+        <div>
+          <p
+            style={{
+              border: "2px solid #b11917",
+              backgroundColor: "#b11917",
+              borderRadius: "25px",
+              padding: "8px",
+              textAlign: "center",
+              marginTop: "10px",
+              fontWeight: "400",
+              fontSize: "0.8rem",
+            }}
+          >
+            www.naijabarrescue.com
+          </p>
+        </div>
       </div>
     </div>
   );
